@@ -8,7 +8,9 @@ const DarkModeToggle = () => {
   return (
     <button onClick={toggleTheme} className="toggle-button">
       {darkMode ? <FaSun size={24} /> : <FaMoon size={24} />}
-      <span className="toggle-text">{darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}</span> 
+      <span className={`toggle-text ${darkMode ? 'dark-mode' : ''}`}>
+        {darkMode ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+      </span>
     </button>
   );
 };

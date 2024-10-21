@@ -73,6 +73,19 @@ body {
   cursor: pointer; 
 }
 
+.toggle-text {
+  font-size: 1rem;
+  color: #333; 
+  padding: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.toggle-text.dark-mode {
+  color: #fff; 
+  padding: 10px;
+}
+
 .app-title {
   font-size: 28px;
   font-weight: bold;
@@ -128,6 +141,17 @@ body {
 .additional-info p {
   font-size: 18px;
   color: var(--text-secondary-color);
+}
+
+.weather-info .date-time {
+  margin-top: 15px;
+  font-size: 1rem;
+  color: #666;
+  text-align: center;
+}
+
+.dark-mode .date-time {
+  color: #ccc;
 }
 
 .error-message {

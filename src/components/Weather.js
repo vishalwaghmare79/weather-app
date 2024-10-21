@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import DarkModeToggle from './DarkModeToggle'; 
 import { useDarkModeToggle } from '../context/ThemeContext';
@@ -8,7 +8,17 @@ const Weather = () => {
   const [weatherData, setWeatherData] = useState(null);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [dateTime, setDateTime] = useState(''); 
   const { darkMode } = useDarkModeToggle();
+
+  useEffect(() => {
+    if (weatherData) {
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString();
+      const formattedTime = now.toLocaleTimeString();
+      setDateTime(`${formattedDate} ${formattedTime}`);
+    }
+  }, [weatherData]); 
 
   const fetchWeather = async () => {
     if (!city) {
@@ -62,6 +72,9 @@ const Weather = () => {
               <p>Humidity: {weatherData.main.humidity}%</p>
               <p>Wind Speed: {weatherData.wind.speed} m/s</p>
               <p>Pressure: {weatherData.main.pressure} hPa</p>
+            </div>
+            <div className="date-time">
+              <p>{`Date & Time: ${dateTime}`}</p>
             </div>
           </div>
         )}
